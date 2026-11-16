@@ -1,0 +1,2 @@
+import Link from 'next/link';import {CheckCircle2,ArrowUpRight} from 'lucide-react';
+export default function ThankYou(){return <section className="page-hero thankyou"><div className="container"><CheckCircle2 size={42}/><span className="eyebrow">ENQUIRY RECEIVED</span><h1>Thank you for<br/><em>contacting us.</em></h1><p>Your message has been submitted. The Design Vision team will review your enquiry.</p><Link className="button button-primary" href="/">Return to homepage <ArrowUpRight size={18}/></Link></div></section>}
