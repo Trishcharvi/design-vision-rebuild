@@ -1,77 +1,143 @@
-# Design Vision — website rebuild
+# Design Vision — Corporate Website
 
-A clean Next.js website for Design Vision, prepared for Netlify deployment as a **static export**. This deliberately avoids requiring Netlify's Next.js server adapter for the public brochure website, which removes a class of runtime-routing problems seen in the previous deployment.
+Static website for **Design Vision**, a pipeline and oil & gas engineering consultancy based in
+Pune, India. Live at <https://designvision-oilandgas.com>.
 
-## Included pages
+- **Framework:** Next.js 15 (App Router) + TypeScript
+- **Styling:** hand-written CSS in `src/app/globals.css` (no Tailwind, no CSS framework)
+- **Output:** fully static export (`output: 'export'`) — no server, no serverless functions
+- **Hosting:** Netlify, building from GitHub `main`
+- **Repository:** `Trishcharvi/design-vision-rebuild`
 
-- Home
-- About
-- Engineering Services
-- Industries
-- Project Experience (clearly marked as representative scopes; no client/project claims invented)
-- Contact (Netlify Forms)
-- Privacy Notice
-- Contact thank-you page
+---
 
-## Technical deployment design
-
-- Next.js App Router with `output: 'export'`
-- Build command: `npm run build`
-- Publish directory: `out`
-- `netlify.toml` already contains these settings
-- No Next.js server functions or API routes are required for this static site
-- Contact form uses Netlify Forms (`data-netlify="true"`); form submissions appear in Netlify's Forms area after form detection is enabled/available for the site
-
-## Run locally
-
-Requires Node.js 20.9+ (Node 22 recommended).
+## Local development
 
 ```bash
-npm install
-npm run dev
+npm ci          # install exactly what package-lock.json specifies
+npm run dev     # dev server at http://localhost:3000
+npm run build   # production build + static export into out/
+npm run lint    # eslint
 ```
 
-Open http://localhost:3000.
+`npm run build` must finish with no errors before pushing. It runs ESLint and the TypeScript
+compiler, then prerenders every route and writes the static site to `out/`.
 
-## Create production export
+To check the built site exactly as Netlify will serve it:
 
 ```bash
-npm run build
+npx serve out        # then open the printed localhost URL
 ```
 
-The static website is generated in `out/`. Preview it with any static web server, for example:
+Do not open `out/index.html` directly with `file://` — asset paths are absolute (`/_next/...`)
+and will not resolve.
+
+---
+
+## Deployment
+
+Netlify builds from the GitHub repository. There is nothing to upload by hand.
 
 ```bash
-npx serve out
+git add -A
+git commit -m "Describe the change"
+git push origin main
 ```
 
-## Deploy to Netlify
+Netlify then runs `npm run build` and publishes `out/`. Settings that must stay as they are:
 
-1. Upload this project to the existing GitHub repository (`Trishcharvi/design-vision`) on the `main` branch, replacing the old website source files with the contents of this folder.
-2. In Netlify, keep the existing project connected to that repository.
-3. In **Project configuration → Developer settings → Build settings**, use:
-   - Base directory: `/` (or leave blank if Netlify displays blank)
-   - Build command: `npm run build`
-   - Publish directory: `out`
-   - Package directory: unset
-4. Set Node.js version to 22 if Netlify does not read `netlify.toml` automatically.
-5. Trigger a fresh production deploy.
-6. After deploy, test both `https://thriving-puffpuff-fed7e7.netlify.app/` and `https://designvision-oilandgas.com/`.
-7. In Netlify, open Forms and verify that `project-enquiry` has been detected. If form detection is disabled, enable it and redeploy once. Submit a test enquiry and confirm it appears in Forms.
+| Netlify setting | Required value |
+| --- | --- |
+| Base directory | *(empty — the repo root is the project root)* |
+| Build command | `npm run build` |
+| Publish directory | `out` |
+| Node version | `22` (set in `netlify.toml`) |
+| Next.js Runtime plugin | **not installed** — this is a static export |
 
-## Contact form behaviour
+`netlify.toml` in the repo root is the source of truth for the build command, publish directory,
+Node version, security headers and cache headers. If the Netlify UI and `netlify.toml` disagree,
+`netlify.toml` wins for build settings.
 
-The contact form is a Netlify form and does not send email directly through Outlook. Netlify stores form submissions and can notify the configured email address. Configure a notification to `designvision-oilandgas@outlook.com` in Netlify Forms → Form notifications.
+### If a deploy fails
 
-## Business details currently displayed
+1. Read the Netlify deploy log top to bottom — the first error is the real one.
+2. Reproduce locally with `npm ci && npm run build`. A build that fails locally will fail there.
+3. Check the **base directory** is empty. If the repo is ever nested one folder deep, this is the
+   setting that breaks it.
+4. Check the **Next.js Runtime** plugin is not installed. It conflicts with `output: 'export'`.
+5. Confirm `node_modules`, `.next` and `out` are not committed (see `.gitignore`).
 
-- Email: designvision-oilandgas@outlook.com
-- Phone: +91 86689 14353
-- Location: Pune, Maharashtra, India
-- Website: https://designvision-oilandgas.com
+---
 
-Please verify the phone number and postal/business details before final launch. The site intentionally does not publish named client references, project values, certifications or vendor approvals without verified evidence and permission.
+## Project structure
 
-## Important
+```
+src/
+  data/
+    site.ts          Company name, contact details, address — single source of truth
+    services.ts      The 11 engineering disciplines + the pipeline lifecycle phases
+    sectors.ts       The 4 business areas (industries)
+  components/
+    Header.tsx       Top bar + sticky nav with dropdown menus (client component)
+    Footer.tsx       Four-column footer, generated from the data files
+    ServiceCards.tsx Discipline cards for the homepage
+    Lifecycle.tsx    Pipeline lifecycle rail
+    Breadcrumbs.tsx  Breadcrumb trail for inner pages
+    CTA.tsx          Reusable closing call-to-action band
+    SectionHeading.tsx
+  app/
+    layout.tsx       Metadata, JSON-LD structured data, header/footer shell
+    globals.css      Base stylesheet + enhancement layer (appended at the end)
+    page.tsx                      /
+    about/                        /about/
+    services/                     /services/
+    services/[slug]/              /services/<discipline>/   (11 pages, generateStaticParams)
+    industries/                   /industries/
+    industries/[slug]/            /industries/<sector>/     (4 pages, generateStaticParams)
+    projects/                     /projects/
+    standards/                    /standards/
+    quality-hse/                  /quality-hse/
+    careers/                      /careers/
+    contact/                      /contact/
+    contact/thank-you/            /contact/thank-you/
+    privacy/                      /privacy/
+public/
+  favicon.png, favicon.svg, robots.txt, sitemap.xml
+```
 
-This package is the replacement source code. It does not itself push to GitHub or change Netlify settings. Those external account actions must be completed in the user's GitHub and Netlify accounts.
+### Adding or editing a discipline page
+
+Edit `src/data/services.ts` only. Each entry generates its own page, its nav menu entry, its
+footer link, its homepage card and its JSON-LD service entry. Add a new object to `DISCIPLINES`
+with a unique `slug`, then add the route to `public/sitemap.xml`.
+
+The same applies to business areas in `src/data/sectors.ts`.
+
+Company name, email, phone and address live in `src/data/site.ts` and are used everywhere —
+change them in one place.
+
+### Contact form
+
+The form on `/contact/` is a **Netlify Form**. For it to keep working, the markup must retain:
+
+- `name="project-enquiry"` on the `<form>`
+- `data-netlify="true"`
+- `netlify-honeypot="bot-field"` and the hidden `bot-field` input
+- the hidden `<input name="form-name" value="project-enquiry">`
+- `action="/contact/thank-you/"`
+
+Netlify detects the form by parsing the deployed HTML at build time. Submissions appear under
+**Forms** in the Netlify dashboard. Set up notification emails there, not in code.
+
+---
+
+## Content conventions
+
+- British English spelling (`organisation`, `optimisation`, `analyse`).
+- No named client or project references until written permission is confirmed — `/projects/`
+  deliberately describes scope types instead.
+- No claim of third-party ISO certification. `/quality-hse/` states that the principles of
+  ISO 9001 are applied and that certification is not claimed. Change this only if certification
+  is actually obtained.
+- Codes and standards on `/standards/` are the normal design basis references. Applicable
+  editions are confirmed per project.

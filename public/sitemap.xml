@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://designvision-oilandgas.com/</loc></url>
-<url><loc>https://designvision-oilandgas.com/about/</loc></url>
-<url><loc>https://designvision-oilandgas.com/services/</loc></url>
-<url><loc>https://designvision-oilandgas.com/industries/</loc></url>
-<url><loc>https://designvision-oilandgas.com/projects/</loc></url>
-<url><loc>https://designvision-oilandgas.com/contact/</loc></url>
-<url><loc>https://designvision-oilandgas.com/privacy/</loc></url>
+  <url><loc>https://designvision-oilandgas.com/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://designvision-oilandgas.com/about/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://designvision-oilandgas.com/services/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://designvision-oilandgas.com/services/pipeline-engineering/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/services/hydraulics-flow-assurance/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/services/pipeline-integrity/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/services/process-engineering/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/services/piping-engineering/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/services/subsea-offshore/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/services/civil-structural/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/services/electrical-instrumentation/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/services/scada-digital/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/services/technical-safety/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/services/project-engineering-assurance/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/industries/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://designvision-oilandgas.com/industries/upstream/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/industries/midstream-pipelines/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/industries/downstream-terminals/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/industries/power-utilities/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/projects/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/standards/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/quality-hse/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/careers/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://designvision-oilandgas.com/contact/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://designvision-oilandgas.com/privacy/</loc><lastmod>2026-11-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

@@ -1,4 +1,127 @@
-import type { Metadata } from 'next';import Link from 'next/link';import { ArrowUpRight, Route, Gauge, Activity, Factory, Waves, Network, DraftingCompass, Cable, HardHat } from 'lucide-react';import SectionHeading from '@/components/SectionHeading';
-export const metadata:Metadata={title:'Engineering Services'};
-const services=[{icon:Route,title:'Pipeline engineering',desc:'Engineering support for onshore and cross-country pipeline systems.',bullets:['Route and feasibility studies','Pipeline design basis and specifications','Wall thickness and code compliance checks','Pipeline stress, flexibility and crossing studies','Material selection and technical documentation']},{icon:Gauge,title:'Hydraulic engineering & flow assurance',desc:'Analysis of pipeline performance and operating behaviour.',bullets:['Steady-state hydraulic modelling','Transient and surge analysis','Capacity and pressure-drop assessment','Pump and compressor interface studies','Operating envelope and debottlenecking']},{icon:Activity,title:'Pipeline integrity management',desc:'Engineering input to help manage threats and maintain asset integrity.',bullets:['Integrity management strategies','Threat and risk assessment support','Inspection and monitoring planning','Fitness-for-service engineering support','Repair, rehabilitation and life-extension studies']},{icon:Factory,title:'Process, piping & facilities',desc:'Multidiscipline engineering for processing and supporting facilities.',bullets:['Process calculations and engineering documents','Piping layout and material engineering','Equipment and package interfaces','Brownfield modification engineering','Technical reviews and design verification']},{icon:Waves,title:'Subsea & offshore engineering',desc:'Engineering studies for offshore pipeline and subsea infrastructure.',bullets:['Subsea pipeline route engineering','Offshore pipeline design support','Installation and constructability studies','Crossing, span and stability assessments','Interface and technical assurance support']},{icon:Network,title:'SCADA & digital engineering',desc:'Engineering systems and information workflows that connect assets.',bullets:['SCADA and telemetry engineering support','Control and instrumentation interfaces','Engineering data management','Digital twin and asset information concepts','EPC and project engineering software workflows']},{icon:DraftingCompass,title:'Civil & structural interfaces',desc:'Engineering coordination for pipeline and facility infrastructure.',bullets:['Pipeline corridor and civil interfaces','Foundation and support coordination','Structural design interface reviews','Constructability and site engineering support']},{icon:Cable,title:'Electrical & instrumentation',desc:'Technical support for electrical and instrumentation interfaces.',bullets:['Electrical load and utility interfaces','Instrumentation engineering support','Cable, earthing and hazardous-area interfaces','Control system integration coordination']},{icon:HardHat,title:'EPC & project engineering support',desc:'Additional engineering capacity through project phases.',bullets:['Engineering deliverable development','Multidiscipline coordination','Technical bid and vendor document reviews','Design review and engineering assurance','Project engineering and documentation support']}];
-export default function Services(){return <><section className="page-hero"><div className="container"><span className="eyebrow">DESIGN VISION / SERVICES</span><h1>Specialist expertise.<br/><em>Connected disciplines.</em></h1><p>Engineering services for pipeline and facility assets—delivered with a practical understanding of project, operational and interface requirements.</p></div></section><section className="section-pad"><div className="container"><div className="services-intro"><SectionHeading eyebrow="OUR ENGINEERING CAPABILITIES" title="The right expertise for each stage of your asset."/><p>Engage Design Vision for a defined technical study, a specific engineering discipline or coordinated support across a wider scope.</p></div><div className="detailed-services">{services.map(({icon:Icon,title,desc,bullets},i)=><article className="detail-service" key={title}><div className="detail-service-head"><span className="service-icon"><Icon size={23}/></span><span>0{i+1}</span></div><div><h2>{title}</h2><p>{desc}</p></div><ul>{bullets.map(b=><li key={b}>{b}</li>)}</ul></article>)}</div></div></section><section className="cta-section"><div className="container cta-inner"><div><span className="eyebrow">NEED A SPECIFIC SCOPE?</span><h2>Let's define the engineering support you need.</h2></div><Link className="button button-light" href="/contact/">Send an enquiry <ArrowUpRight size={18}/></Link></div></section></>}
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { ArrowUpRight, ArrowRight } from 'lucide-react';
+import SectionHeading from '@/components/SectionHeading';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import Lifecycle from '@/components/Lifecycle';
+import CTA from '@/components/CTA';
+import { DISCIPLINES } from '@/data/services';
+
+export const metadata: Metadata = {
+  title: 'Engineering Services',
+  description:
+    'Pipeline, hydraulic, integrity, process, piping, subsea, civil, electrical, instrumentation, SCADA, technical safety and project engineering services for oil and gas assets.',
+  alternates: { canonical: '/services/' }
+};
+
+export default function Services() {
+  return (
+    <>
+      <section className="page-hero">
+        <div className="container">
+          <Breadcrumbs items={[{ label: 'Services' }]} />
+          <span className="eyebrow">DESIGN VISION / SERVICES</span>
+          <h1>
+            Specialist expertise.
+            <br />
+            <em>Connected disciplines.</em>
+          </h1>
+          <p>
+            Engineering services for pipeline and facility assets, delivered with a practical
+            understanding of project, operational and interface requirements.
+          </p>
+        </div>
+      </section>
+
+      <section className="section-pad">
+        <div className="container">
+          <div className="services-intro">
+            <SectionHeading
+              eyebrow="OUR ENGINEERING CAPABILITIES"
+              title="The right expertise for each stage of your asset."
+            />
+            <p>
+              Engage Design Vision for a defined technical study, a specific engineering discipline or
+              coordinated support across a wider scope. Each discipline below has its own scope of
+              work, deliverable list and code basis.
+            </p>
+          </div>
+
+          <div className="detailed-services">
+            {DISCIPLINES.map(({ icon: Icon, title, short, scope, slug, codes }, i) => (
+              <article className="detail-service" key={slug}>
+                <div className="detail-service-head">
+                  <span className="service-icon">
+                    <Icon size={23} />
+                  </span>
+                  <span>{String(i + 1).padStart(2, '0')}</span>
+                </div>
+                <div className="detail-service-copy">
+                  <h2>
+                    <Link href={`/services/${slug}/`}>{title}</Link>
+                  </h2>
+                  <p>{short}</p>
+                  <Link className="detail-service-link" href={`/services/${slug}/`}>
+                    Scope, deliverables &amp; codes <ArrowRight size={15} />
+                  </Link>
+                </div>
+                <div className="detail-service-detail">
+                  <ul>
+                    {scope.slice(0, 5).map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                  <div className="detail-service-codes">
+                    {codes.slice(0, 4).map((c) => (
+                      <span key={c}>{c}</span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad lifecycle-section">
+        <div className="container">
+          <div className="section-heading light">
+            <span className="eyebrow">ASSET LIFECYCLE</span>
+            <h2>Where our engineering fits.</h2>
+            <p>
+              We can join a pipeline project at any point in its life, and the deliverables change
+              accordingly.
+            </p>
+          </div>
+          <Lifecycle />
+        </div>
+      </section>
+
+      <section className="section-pad">
+        <div className="container">
+          <div className="notice-panel">
+            <span className="eyebrow">ENGAGEMENT MODELS</span>
+            <h2>Three ways clients use us</h2>
+            <p>
+              <b>Defined study.</b> A single technical question with a fixed scope, method and report
+              deliverable. <b>Discipline package.</b> A full set of discipline deliverables for a
+              project phase, produced and checked to your document control requirements.{' '}
+              <b>Engineering capacity.</b> Ongoing support alongside your own team, including design
+              review, vendor document review and technical assurance.
+            </p>
+          </div>
+          <Link className="text-link" href="/quality-hse/">
+            How we check and issue deliverables <ArrowUpRight size={17} />
+          </Link>
+        </div>
+      </section>
+
+      <CTA
+        eyebrow="NEED A SPECIFIC SCOPE?"
+        title="Let's define the engineering support you need."
+        text="Describe the asset and the phase, and we will come back with a scope, a deliverable list and a code basis."
+        label="Send an enquiry"
+      />
+    </>
+  );
+}
