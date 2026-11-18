@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://designvision-oilandgas.com'),
+  icons: { icon: '/favicon.svg', shortcut: '/favicon.svg' },
   verification: {
     google: "Oj22Mbiai8vFv3E-t9oElcgWQWwWfNJNjexFf0KPg4g",
   },

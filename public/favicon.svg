@@ -1,1 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0b222b"/><text x="10" y="43" font-family="Arial,sans-serif" font-size="29" font-weight="700" fill="#fff">DV</text><circle cx="52" cy="12" r="5" fill="#5cd1c4"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Design Vision DV">
+  <defs>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4fbff"/>
+      <stop offset=".18" stop-color="#4d9cff"/>
+      <stop offset=".42" stop-color="#071d48"/>
+      <stop offset=".68" stop-color="#b9e6ff"/>
+      <stop offset="1" stop-color="#123d83"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".2" stop-color="#a9d9ff"/>
+      <stop offset=".48" stop-color="#2474d8"/>
+      <stop offset=".72" stop-color="#071a3d"/>
+      <stop offset=".9" stop-color="#6ebaff"/>
+      <stop offset="1" stop-color="#eaf8ff"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff5b2"/>
+      <stop offset=".28" stop-color="#ffc928"/>
+      <stop offset=".58" stop-color="#df7900"/>
+      <stop offset=".82" stop-color="#fff07b"/>
+      <stop offset="1" stop-color="#bf5b00"/>
+    </linearGradient>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#132944"/>
+      <stop offset="1" stop-color="#061321"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#background)"/>
+  <!-- Open, polished orbital ring echoing the reference mark. -->
+  <path d="M12.4 44.8A24 24 0 1 1 53.7 18.3" fill="none" stroke="#020b17" stroke-width="5.2" stroke-linecap="round"/>
+  <path d="M12.4 44.8A24 24 0 1 1 53.7 18.3" fill="none" stroke="url(#ring)" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M14.2 43.4A21.8 21.8 0 1 1 51.7 19.6" fill="none" stroke="#c9eeff" stroke-opacity=".8" stroke-width=".65" stroke-linecap="round"/>
+  <!-- Angular D monogram. -->
+  <path d="M14.5 17.5h12.2c9.5 0 15.7 5.6 15.7 14.2s-6.2 14.6-15.7 14.6H14.5V17.5Zm8.1 6.2v16.3h3.7c5 0 7.9-3 7.9-8.2 0-5.1-2.9-8.1-7.9-8.1h-3.7Z" fill="url(#steel)" fill-rule="evenodd" stroke="#07142b" stroke-width="1.1" stroke-linejoin="round"/>
+  <path d="M18 19.6h8.5" fill="none" stroke="#fff" stroke-opacity=".72" stroke-width=".75" stroke-linecap="round"/>
+  <!-- Gold V sweep layered into the lower right of the monogram. -->
+  <path d="m34.1 25.3 9.4-5.2 9.4 5.2-10.6 18.1-3.9-6.1 6.2-10.4-6.1 3.2-4.4-4.8Z" fill="url(#gold)" stroke="#633400" stroke-width="1.05" stroke-linejoin="round"/>
+  <path d="m39.5 36.6 3.1 4.8 8.7-14.8" fill="none" stroke="#fff2a0" stroke-width=".85" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
